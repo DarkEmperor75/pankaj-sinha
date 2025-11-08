@@ -1,0 +1,149 @@
+Relevant Files
+
+src/pages/index.tsx — Homepage component.
+
+src/pages/research.tsx — Research summary page.
+
+src/pages/writing.tsx — Blog list and post-rendering.
+
+src/pages/ventures.tsx — Ventures/projects overview.
+
+src/pages/contact.tsx — Contact form or contact info page.
+
+src/components/Navbar.tsx — Site-wide navigation bar.
+
+src/components/Footer.tsx — Common footer section.
+
+src/components/Layout.tsx — Page layout wrapper with meta tags.
+
+src/styles/globals.css — Global styling with Tailwind.
+
+public/ — Static assets (icons, images, favicons).
+
+.github/workflows/deploy.yml — GitHub Pages deployment workflow.
+
+Instructions for Completing Tasks
+
+Check off tasks (- [x]) as you complete them.
+
+Complete sub-tasks in order.
+
+Use Cursor or ChatGPT to generate or refactor code for each sub-task interactively.
+
+Tasks
+🪄 Phase 0 — Setup
+
+ 0.0 Create feature branch
+
+ 0.1 Create and checkout a new branch for this project:
+git checkout -b feature/personal-website
+
+ 0.2 Initialize a new Next.js app using TypeScript:
+npx create-next-app@latest personal-website --typescript
+
+ 0.3 Install TailwindCSS and set up configuration:
+npm install -D tailwindcss postcss autoprefixer
+npx tailwindcss init -p
+
+ 0.4 Add prettier and eslint for clean code and formatting.
+
+ 0.5 Commit setup: git add . && git commit -m "Initialize Next.js with Tailwind"
+
+🏗️ Phase 1 — Structure and Layout
+
+ 1.0 Set up basic site structure
+
+ 1.1 Create /src/pages directory with Home, Research, Writing, Ventures, and Contact pages.
+
+ 1.2 Create /src/components with Navbar.tsx, Footer.tsx, and Layout.tsx.
+
+ 1.3 Add global layout wrapper for all pages (imported in _app.tsx).
+
+ 1.4 Configure routing and metadata for each page.
+
+ 1.5 Test navigation across all pages.
+
+🎨 Phase 2 — Design and Styling
+
+ 2.0 Implement creative-yet-professional theme
+
+ 2.1 Define Tailwind theme colors (warm neutrals, subtle gradients).
+
+ 2.2 Add typography styles (modern sans-serif + professional serif pairing).
+
+ 2.3 Add light/dark mode toggle using Tailwind’s dark: variant.
+
+ 2.4 Design Navbar (responsive with logo/name, links).
+
+ 2.5 Design Footer (links + copyright).
+
+ 2.6 Test responsiveness on mobile/tablet/desktop.
+
+🧠 Phase 3 — Content Pages
+
+ 3.0 Build and populate content pages
+
+ 3.1 Home: Intro section (name, tagline, short summary of your work).
+
+ 3.2 Research: Summaries of academic works (each as a card or section).
+
+ 3.3 Writing:
+- Add Markdown-based blog post structure under /content/writing.
+- Use gray-matter + next-mdx-remote for parsing.
+- Render list of posts and single-post pages.
+
+ 3.4 Ventures: Overview of Riti, CityConnect, iLag (with logos and links).
+
+ 3.5 Contact: Create simple contact form (Formspree or EmailJS).
+
+ 3.6 Add SEO metadata for each page (Next Head or next-seo).
+
+⚙️ Phase 4 — Interactivity & Enhancements
+
+ 4.0 Add interactive touches
+
+ 4.1 Animate section transitions using Framer Motion.
+
+ 4.2 Add hover effects for links and project cards.
+
+ 4.3 Include a scroll-to-top button.
+
+ 4.4 Add smooth scrolling for anchor navigation.
+
+ 4.5 Optional: Add “Now Playing” or “Current Focus” section via small JS widget.
+
+🚀 Phase 5 — Deployment
+
+ 5.0 Prepare for GitHub Pages deployment
+
+ 5.1 Add next.config.js for static export (output: 'export').
+
+ 5.2 Create .github/workflows/deploy.yml to build and push /out directory to gh-pages branch.
+
+ 5.3 Test local build: npm run build && npm run start.
+
+ 5.4 Push to GitHub and verify automatic deploy.
+
+ 5.5 Ensure domain and SEO are functional.
+
+🌱 Phase 6 — Future Extensions (Optional)
+
+ 6.0 Add new sections when ready:
+
+ 6.1 Timeline or “Journey” page.
+
+ 6.2 Integrate Substack or RSS feed for blog updates.
+
+ 6.3 Add AI Assistant widget (OpenAI API).
+
+ 6.4 Enable comments via GitHub Issues or Giscus.
+
+ 6.5 Add analytics (Plausible or Google Analytics).
+
+Notes
+
+All Markdown-based content can be stored in /content/[section] folders.
+
+Use Cursor’s AI task runner to implement each numbered sub-task interactively.
+
+Keep a clean commit history for learning review (git log --oneline).

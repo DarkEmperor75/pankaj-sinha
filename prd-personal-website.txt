@@ -1,0 +1,99 @@
+1. Introduction / Overview
+
+This project aims to build a personal website for Pankaj Kumar Sinha — a creative technologist, optimization researcher, and system architect. The site will serve as a public-facing professional and personal identity, blending his deep academic work with his emerging ventures and philosophical writing.
+
+The goal is to create a space that feels intellectually rigorous, technically modern, and spiritually grounded, where visitors can learn about his research, ventures, and ideas through an elegant, interactive interface hosted on GitHub Pages.
+
+2. Goals
+
+Present a cohesive professional identity blending academia, entrepreneurship, and thought leadership.
+
+Provide a structured yet expressive medium for publishing writings, reflections, and research notes.
+
+Showcase ventures and projects (e.g., Riti, CityConnect, iLag, etc.) as living examples of applied intelligence.
+
+Build an interactive site that can evolve — adding features like a blog CMS, comment system, or AI assistant later.
+
+Host the site on GitHub Pages for easy maintenance and free deployment.
+
+3. User Stories
+
+As a visitor, I can read about Pankaj’s background and research focus.
+
+As a fellow academic or collaborator, I can browse his current projects and publications.
+
+As an entrepreneur or investor, I can understand his ventures, their goals, and philosophies.
+
+As a reader or thinker, I can explore his writings and reflections.
+
+As Pankaj (admin), I can add or edit content (blogs, project summaries, or links) easily without major technical overhead.
+
+4. Functional Requirements
+
+The site must include the following sections/pages:
+
+Home: A concise personal introduction and visual overview of Pankaj’s intellectual ecosystem.
+
+Research: Summaries of key research papers, topics, and academic interests.
+
+Writing: A blog-like section featuring categorized essays, reflections, or philosophical notes.
+
+Ventures: Overview of projects such as Riti, CityConnect, iLag, etc.
+
+Contact: Email or form-based contact section (with basic anti-spam).
+
+The site should include global navigation linking all major sections.
+
+The website should be built using a modern static site framework (React, Astro, or Next.js recommended for interactivity).
+
+Content for writing/blog should be Markdown-based for easy editing and Git-based publishing.
+
+Include a light/dark mode toggle to suit different viewing preferences.
+
+Include SEO metadata and Open Graph previews for social media sharing.
+
+The site must be easily deployable via GitHub Pages workflow.
+
+The design should balance creative tech-founder energy (sharp typography, modern layout) with spiritual calmness (warm tones, whitespace, subtle motion).
+
+5. Non-Goals (Out of Scope)
+
+No need for user authentication or comments initially.
+
+No need for a complex CMS backend at this stage (content in Markdown).
+
+No e-commerce or donation functionality in the first version.
+
+No AI chat integration in the initial release (reserved for future).
+
+6. Design Considerations
+
+Visuals: Blend modern minimalism with symbolic depth — possible use of soft gradients, geometric patterns, or subtle animated elements.
+
+Typography: Professional serif + modern sans-serif pairing.
+
+Responsive Design: Must look great on desktop, tablet, and mobile.
+
+Imagery: Optionally include background visuals from nature, code, or abstract art — representing synthesis of logic and consciousness.
+
+7. Technical Considerations
+
+Framework: Recommend Next.js + TailwindCSS for scalability and styling control.
+
+Deployment: GitHub Pages via GitHub Actions.
+
+Blog system: Markdown or MDX files parsed at build time.
+
+Future extensions: Contact form via Formspree or EmailJS; AI Assistant via OpenAI API.
+
+8. Success Metrics
+
+The site deploys successfully and loads within 2 seconds.
+
+Visitors can easily navigate between all sections.
+
+Blog posts render correctly in Markdown.
+
+Visual feedback from peers indicates professional yet soulful aesthetic.
+
+Easy to update content without breaking structure.
