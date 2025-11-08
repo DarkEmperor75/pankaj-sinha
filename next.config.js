@@ -5,7 +5,7 @@ const nextConfig = {
     unoptimized: true,
   },
   // basePath configured for GitHub Pages subdirectory deployment
-  basePath: '/personal-website',
+  basePath: '/pankaj-sinha',
   trailingSlash: true,
 }
 
