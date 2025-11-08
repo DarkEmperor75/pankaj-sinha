@@ -4,8 +4,8 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
-  // basePath configured for GitHub Pages subdirectory deployment
-  basePath: '/pankaj-sinha',
+  // No basePath needed for username.github.io repositories
+  // basePath: '/pankaj-sinha',
   trailingSlash: true,
 }
 
