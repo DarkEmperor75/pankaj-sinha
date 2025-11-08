@@ -7,7 +7,13 @@ const Home: NextPage = () => {
     <>
       <Head>
         <title>Pankaj Kumar Sinha | Home</title>
-        <meta name="description" content="Creative technologist, optimization researcher, and system architect" />
+        <meta name="description" content="Creative technologist, optimization researcher, and system architect. Exploring the intersection of intelligence, consciousness, and technology." />
+        <meta property="og:title" content="Pankaj Kumar Sinha | Creative Technologist & Researcher" />
+        <meta property="og:description" content="Creative technologist, optimization researcher, and system architect" />
+        <meta property="og:type" content="website" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Pankaj Kumar Sinha" />
+        <meta name="twitter:description" content="Creative technologist, optimization researcher, and system architect" />
       </Head>
       <main className="min-h-screen">
         {/* Hero Section */}

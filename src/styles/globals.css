@@ -36,3 +36,60 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
+/* MDX/Prose Styles */
+.prose {
+  @apply text-warm-700 dark:text-warm-300;
+}
+
+.prose h1,
+.prose h2,
+.prose h3,
+.prose h4 {
+  @apply font-serif font-semibold text-warm-900 dark:text-warm-100 mt-8 mb-4;
+}
+
+.prose h1 {
+  @apply text-3xl;
+}
+
+.prose h2 {
+  @apply text-2xl;
+}
+
+.prose h3 {
+  @apply text-xl;
+}
+
+.prose p {
+  @apply mb-4 leading-relaxed;
+}
+
+.prose a {
+  @apply text-warm-700 dark:text-warm-300 underline hover:text-warm-900 dark:hover:text-warm-100;
+}
+
+.prose ul,
+.prose ol {
+  @apply mb-4 ml-6;
+}
+
+.prose li {
+  @apply mb-2;
+}
+
+.prose code {
+  @apply px-1 py-0.5 rounded bg-warm-100 dark:bg-warm-900 text-warm-800 dark:text-warm-200 text-sm;
+}
+
+.prose pre {
+  @apply p-4 rounded-lg bg-warm-100 dark:bg-warm-900 overflow-x-auto mb-4;
+}
+
+.prose pre code {
+  @apply bg-transparent p-0;
+}
+
+.prose blockquote {
+  @apply border-l-4 border-warm-300 dark:border-warm-700 pl-4 italic text-warm-600 dark:text-warm-400;
+}
+
