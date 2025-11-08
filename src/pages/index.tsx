@@ -1,8 +1,31 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import Link from 'next/link'
+import { motion } from 'framer-motion'
+import CurrentFocus from '@/components/CurrentFocus'
 
 const Home: NextPage = () => {
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2,
+      },
+    },
+  }
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.5,
+      },
+    },
+  }
+
   return (
     <>
       <Head>
@@ -17,59 +40,90 @@ const Home: NextPage = () => {
       </Head>
       <main className="min-h-screen">
         {/* Hero Section */}
-        <section className="container mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-32">
-          <div className="max-w-3xl">
+        <motion.section
+          initial="hidden"
+          animate="visible"
+          variants={containerVariants}
+          className="container mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-32"
+        >
+          <motion.div variants={itemVariants} className="max-w-3xl">
             <h1 className="text-5xl md:text-6xl lg:text-7xl font-serif font-semibold text-warm-900 dark:text-warm-100 mb-6 leading-tight">
               Pankaj Kumar Sinha
             </h1>
-            <p className="text-xl md:text-2xl text-warm-700 dark:text-warm-300 font-sans mb-8 leading-relaxed">
+            <motion.p
+              variants={itemVariants}
+              className="text-xl md:text-2xl text-warm-700 dark:text-warm-300 font-sans mb-8 leading-relaxed"
+            >
               Creative technologist, optimization researcher, and system architect
-            </p>
-            <p className="text-lg text-warm-600 dark:text-warm-400 font-sans leading-relaxed max-w-2xl">
+            </motion.p>
+            <motion.p
+              variants={itemVariants}
+              className="text-lg text-warm-600 dark:text-warm-400 font-sans leading-relaxed max-w-2xl"
+            >
               Exploring the intersection of intelligence, consciousness, and technology through research, 
               writing, and ventures that bridge academia and entrepreneurship.
-            </p>
-          </div>
-        </section>
+            </motion.p>
+          </motion.div>
+        </motion.section>
 
         {/* Quick Links Section */}
-        <section className="container mx-auto px-4 sm:px-6 lg:px-8 py-16">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <Link
-              href="/research"
-              className="p-6 rounded-lg border border-warm-200 dark:border-warm-800 bg-warm-50 dark:bg-warm-950 hover:bg-warm-100 dark:hover:bg-warm-900 transition-colors group"
-            >
-              <h2 className="text-xl font-serif font-semibold text-warm-900 dark:text-warm-100 mb-2 group-hover:text-warm-700 dark:group-hover:text-warm-300 transition-colors">
-                Research
-              </h2>
-              <p className="text-warm-600 dark:text-warm-400 font-sans text-sm">
-                Academic papers, publications, and research interests
-              </p>
-            </Link>
-            <Link
-              href="/writing"
-              className="p-6 rounded-lg border border-warm-200 dark:border-warm-800 bg-warm-50 dark:bg-warm-950 hover:bg-warm-100 dark:hover:bg-warm-900 transition-colors group"
-            >
-              <h2 className="text-xl font-serif font-semibold text-warm-900 dark:text-warm-100 mb-2 group-hover:text-warm-700 dark:group-hover:text-warm-300 transition-colors">
-                Writing
-              </h2>
-              <p className="text-warm-600 dark:text-warm-400 font-sans text-sm">
-                Essays, reflections, and philosophical notes
-              </p>
-            </Link>
-            <Link
-              href="/ventures"
-              className="p-6 rounded-lg border border-warm-200 dark:border-warm-800 bg-warm-50 dark:bg-warm-950 hover:bg-warm-100 dark:hover:bg-warm-900 transition-colors group"
-            >
-              <h2 className="text-xl font-serif font-semibold text-warm-900 dark:text-warm-100 mb-2 group-hover:text-warm-700 dark:group-hover:text-warm-300 transition-colors">
-                Ventures
-              </h2>
-              <p className="text-warm-600 dark:text-warm-400 font-sans text-sm">
-                Projects including Riti, CityConnect, iLag
-              </p>
-            </Link>
+        <motion.section
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: '-100px' }}
+          variants={containerVariants}
+          className="container mx-auto px-4 sm:px-6 lg:px-8 py-16"
+        >
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
+            <motion.div variants={itemVariants}>
+              <Link
+                href="/research"
+                className="block p-6 rounded-lg border border-warm-200 dark:border-warm-800 bg-warm-50 dark:bg-warm-950 hover:bg-warm-100 dark:hover:bg-warm-900 transition-all duration-300 group hover:shadow-lg hover:-translate-y-1"
+              >
+                <h2 className="text-xl font-serif font-semibold text-warm-900 dark:text-warm-100 mb-2 group-hover:text-warm-700 dark:group-hover:text-warm-300 transition-colors">
+                  Research
+                </h2>
+                <p className="text-warm-600 dark:text-warm-400 font-sans text-sm">
+                  Academic papers, publications, and research interests
+                </p>
+              </Link>
+            </motion.div>
+            <motion.div variants={itemVariants}>
+              <Link
+                href="/writing"
+                className="block p-6 rounded-lg border border-warm-200 dark:border-warm-800 bg-warm-50 dark:bg-warm-950 hover:bg-warm-100 dark:hover:bg-warm-900 transition-all duration-300 group hover:shadow-lg hover:-translate-y-1"
+              >
+                <h2 className="text-xl font-serif font-semibold text-warm-900 dark:text-warm-100 mb-2 group-hover:text-warm-700 dark:group-hover:text-warm-300 transition-colors">
+                  Writing
+                </h2>
+                <p className="text-warm-600 dark:text-warm-400 font-sans text-sm">
+                  Essays, reflections, and philosophical notes
+                </p>
+              </Link>
+            </motion.div>
+            <motion.div variants={itemVariants}>
+              <Link
+                href="/ventures"
+                className="block p-6 rounded-lg border border-warm-200 dark:border-warm-800 bg-warm-50 dark:bg-warm-950 hover:bg-warm-100 dark:hover:bg-warm-900 transition-all duration-300 group hover:shadow-lg hover:-translate-y-1"
+              >
+                <h2 className="text-xl font-serif font-semibold text-warm-900 dark:text-warm-100 mb-2 group-hover:text-warm-700 dark:group-hover:text-warm-300 transition-colors">
+                  Ventures
+                </h2>
+                <p className="text-warm-600 dark:text-warm-400 font-sans text-sm">
+                  Projects including Riti, CityConnect, iLag
+                </p>
+              </Link>
+            </motion.div>
           </div>
-        </section>
+
+          {/* Current Focus Widget */}
+          <motion.div
+            variants={itemVariants}
+            className="max-w-2xl"
+          >
+            <CurrentFocus />
+          </motion.div>
+        </motion.section>
       </main>
     </>
   )

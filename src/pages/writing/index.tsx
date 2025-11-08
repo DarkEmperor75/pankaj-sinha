@@ -1,6 +1,7 @@
 import type { GetStaticProps, NextPage } from 'next'
 import Head from 'next/head'
 import Link from 'next/link'
+import { motion } from 'framer-motion'
 import { getAllPosts, Post } from '@/lib/posts'
 
 interface WritingProps {
@@ -31,10 +32,27 @@ const Writing: NextPage<WritingProps> = ({ posts }) => {
                 <p>No posts yet. Check back soon!</p>
               </div>
             ) : (
-              <div className="space-y-8">
-                {posts.map((post) => (
-                  <article
+              <motion.div
+                initial="hidden"
+                animate="visible"
+                variants={{
+                  hidden: { opacity: 0 },
+                  visible: {
+                    opacity: 1,
+                    transition: {
+                      staggerChildren: 0.1,
+                    },
+                  },
+                }}
+                className="space-y-8"
+              >
+                {posts.map((post, index) => (
+                  <motion.article
                     key={post.slug}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: index * 0.1, duration: 0.5 }}
+                    whileHover={{ x: 4 }}
                     className="border-b border-warm-200 dark:border-warm-800 pb-8 last:border-0"
                   >
                     <Link href={`/writing/${post.slug}`}>
@@ -61,13 +79,16 @@ const Writing: NextPage<WritingProps> = ({ posts }) => {
                     </p>
                     <Link
                       href={`/writing/${post.slug}`}
-                      className="inline-block text-warm-700 dark:text-warm-300 hover:text-warm-900 dark:hover:text-warm-100 font-sans font-medium transition-colors"
+                      className="inline-block text-warm-700 dark:text-warm-300 hover:text-warm-900 dark:hover:text-warm-100 font-sans font-medium transition-colors group"
                     >
-                      Read more →
+                      Read more{' '}
+                      <span className="inline-block group-hover:translate-x-1 transition-transform">
+                        →
+                      </span>
                     </Link>
-                  </article>
+                  </motion.article>
                 ))}
-              </div>
+              </motion.div>
             )}
           </div>
         </div>

@@ -1,5 +1,6 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
+import { motion } from 'framer-motion'
 
 interface Venture {
   name: string
@@ -30,6 +31,27 @@ const ventures: Venture[] = [
   },
 ]
 
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.15,
+    },
+  },
+}
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.5,
+    },
+  },
+}
+
 const Ventures: NextPage = () => {
   return (
     <>
@@ -42,19 +64,36 @@ const Ventures: NextPage = () => {
       <main className="min-h-screen">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
           <div className="max-w-4xl">
-            <h1 className="text-4xl md:text-5xl font-serif font-semibold text-warm-900 dark:text-warm-100 mb-4">
+            <motion.h1
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              className="text-4xl md:text-5xl font-serif font-semibold text-warm-900 dark:text-warm-100 mb-4"
+            >
               Ventures
-            </h1>
-            <p className="text-lg text-warm-600 dark:text-warm-400 font-sans mb-12">
+            </motion.h1>
+            <motion.p
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.2, duration: 0.5 }}
+              className="text-lg text-warm-600 dark:text-warm-400 font-sans mb-12"
+            >
               Projects and ventures that apply research insights to create real-world impact, 
               bridging the gap between academia and practice.
-            </p>
+            </motion.p>
 
-            <div className="space-y-8">
+            <motion.div
+              initial="hidden"
+              animate="visible"
+              variants={containerVariants}
+              className="space-y-8"
+            >
               {ventures.map((venture) => (
-                <article
+                <motion.article
                   key={venture.name}
-                  className="p-8 rounded-lg border border-warm-200 dark:border-warm-800 bg-warm-50 dark:bg-warm-950 hover:bg-warm-100 dark:hover:bg-warm-900 transition-colors"
+                  variants={itemVariants}
+                  whileHover={{ y: -4, transition: { duration: 0.2 } }}
+                  className="p-8 rounded-lg border border-warm-200 dark:border-warm-800 bg-warm-50 dark:bg-warm-950 hover:bg-warm-100 dark:hover:bg-warm-900 transition-all duration-300 hover:shadow-lg cursor-pointer"
                 >
                   <div className="flex items-start justify-between mb-4">
                     <h2 className="text-3xl font-serif font-semibold text-warm-900 dark:text-warm-100">
@@ -78,9 +117,9 @@ const Ventures: NextPage = () => {
                   <p className="text-warm-700 dark:text-warm-300 font-sans italic">
                     {venture.mission}
                   </p>
-                </article>
+                </motion.article>
               ))}
-            </div>
+            </motion.div>
           </div>
         </div>
       </main>
