@@ -14,25 +14,23 @@ const Contact: NextPage = () => {
     e.preventDefault()
     setStatus('submitting')
 
-    // Using Formspree endpoint - replace with your Formspree form ID
-    // For now, this is a placeholder that shows the form structure
-    // To use Formspree: 1) Sign up at formspree.io, 2) Create a form, 3) Replace the action URL below
-    
-    try {
-      const response = await fetch('https://formspree.io/f/YOUR_FORM_ID', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
-      })
+    // Using mailto: to send email directly
+    // This opens the user's email client with pre-filled information
+    const subject = encodeURIComponent(`Contact Form Submission from ${formData.name}`)
+    const body = encodeURIComponent(
+      `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
+    )
+    const mailtoLink = `mailto:pankajksinha.123@gmail.com?subject=${subject}&body=${body}`
 
-      if (response.ok) {
+    try {
+      // Open email client
+      window.location.href = mailtoLink
+      
+      // Show success message after a short delay
+      setTimeout(() => {
         setStatus('success')
         setFormData({ name: '', email: '', message: '' })
-      } else {
-        setStatus('error')
-      }
+      }, 500)
     } catch (error) {
       setStatus('error')
     }
@@ -165,21 +163,40 @@ const Contact: NextPage = () => {
 
               {status === 'success' && (
                 <p className="text-green-600 dark:text-green-400 font-sans">
-                  Thank you! Your message has been sent. I&apos;ll get back to you soon.
+                  Thank you! Your email client should open with the message pre-filled. 
+                  Please send it to complete your submission.
                 </p>
               )}
 
               {status === 'error' && (
                 <p className="text-red-600 dark:text-red-400 font-sans">
-                  There was an error sending your message. Please try again or reach out directly.
+                  There was an error. Please try again or reach out directly via email.
                 </p>
               )}
             </form>
 
             <div className="mt-12 pt-8 border-t border-warm-200 dark:border-warm-800">
               <p className="text-warm-600 dark:text-warm-400 font-sans text-sm">
-                Note: To enable the contact form, please set up a Formspree account and replace 
-                the form action URL in the contact page code with your Formspree form ID.
+                <strong>Note:</strong> This form opens your email client to send the message. 
+                For a seamless experience without opening an email client, consider setting up{' '}
+                <a 
+                  href="https://www.emailjs.com/" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="underline hover:text-warm-900 dark:hover:text-warm-100"
+                >
+                  EmailJS
+                </a>
+                {' '}or{' '}
+                <a 
+                  href="https://formspree.io/" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="underline hover:text-warm-900 dark:hover:text-warm-100"
+                >
+                  Formspree
+                </a>
+                .
               </p>
             </div>
           </div>
