@@ -4,9 +4,9 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
-  // Uncomment and set basePath if deploying to a subdirectory
-  // basePath: '/your-repo-name',
-  // trailingSlash: true,
+  // basePath configured for GitHub Pages subdirectory deployment
+  basePath: '/personal-website',
+  trailingSlash: true,
 }
 
 module.exports = nextConfig
