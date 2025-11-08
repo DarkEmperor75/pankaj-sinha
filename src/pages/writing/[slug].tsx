@@ -1,6 +1,7 @@
 import type { GetStaticPaths, GetStaticProps, NextPage } from 'next'
 import Head from 'next/head'
 import Link from 'next/link'
+import Image from 'next/image'
 import { serialize } from 'next-mdx-remote/serialize'
 import { MDXRemote, MDXRemoteSerializeResult } from 'next-mdx-remote'
 import { getAllPosts, getPostBySlug, Post } from '@/lib/posts'
@@ -8,6 +9,54 @@ import { getAllPosts, getPostBySlug, Post } from '@/lib/posts'
 interface WritingPostProps {
   post: Post
   mdxSource: MDXRemoteSerializeResult
+}
+
+// Custom components for MDX
+const components = {
+  // eslint-disable-next-line @next/next/no-img-element
+  img: ({ src, alt, ...props }: any) => {
+    // Handle both relative paths and absolute URLs
+    if (src?.startsWith('http')) {
+      // eslint-disable-next-line @next/next/no-img-element
+      return <img src={src} alt={alt} className="rounded-lg my-6 w-full" {...props} />
+    }
+    // For images in public folder
+    return (
+      <div className="my-6">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img 
+          src={src} 
+          alt={alt} 
+          className="rounded-lg w-full h-auto shadow-lg" 
+          {...props} 
+        />
+        {alt && (
+          <p className="text-sm text-warm-500 dark:text-warm-500 text-center mt-2 italic">
+            {alt}
+          </p>
+        )}
+      </div>
+    )
+  },
+  // Support for Next.js Image component in MDX
+  Image: ({ src, alt, width, height, ...props }: any) => (
+    <div className="my-6">
+      <Image
+        src={src}
+        alt={alt || ''}
+        width={width || 800}
+        height={height || 400}
+        className="rounded-lg w-full h-auto shadow-lg"
+        unoptimized
+        {...props}
+      />
+      {alt && (
+        <p className="text-sm text-warm-500 dark:text-warm-500 text-center mt-2 italic">
+          {alt}
+        </p>
+      )}
+    </div>
+  ),
 }
 
 const WritingPost: NextPage<WritingPostProps> = ({ post, mdxSource }) => {
@@ -63,7 +112,7 @@ const WritingPost: NextPage<WritingPostProps> = ({ post, mdxSource }) => {
               </header>
 
               <div className="prose prose-warm dark:prose-invert max-w-none font-sans">
-                <MDXRemote {...mdxSource} />
+                <MDXRemote {...mdxSource} components={components} />
               </div>
             </article>
           </div>

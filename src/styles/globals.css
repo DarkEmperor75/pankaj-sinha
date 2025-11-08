@@ -104,3 +104,15 @@ h1, h2, h3, h4, h5, h6 {
   @apply border-l-4 border-warm-300 dark:border-warm-700 pl-4 italic text-warm-600 dark:text-warm-400;
 }
 
+.prose img {
+  @apply rounded-lg shadow-lg my-6 w-full h-auto;
+}
+
+.prose figure {
+  @apply my-6;
+}
+
+.prose figcaption {
+  @apply text-sm text-warm-500 dark:text-warm-500 text-center mt-2 italic;
+}
+
