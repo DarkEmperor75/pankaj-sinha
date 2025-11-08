@@ -1,0 +1,4 @@
+# Place blog post videos here
+# Example: public/videos/writing/my-post-video.mp4
+# Then reference in markdown as: <video src="/videos/writing/my-post-video.mp4" controls />
+

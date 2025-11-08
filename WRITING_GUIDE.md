@@ -139,9 +139,75 @@ personal-website/
 │       └── post-3.md  (references /images/writing/post-3-photo.webp)
 ```
 
+## Adding Videos
+
+### Local Video Files
+
+1. **Place videos** in `public/videos/writing/`:
+   ```
+   public/videos/writing/
+     ├── my-video.mp4
+     └── demo.webm
+   ```
+
+2. **Add to markdown** using HTML:
+   ```html
+   <video src="/videos/writing/my-video.mp4" controls />
+   ```
+
+3. **With options**:
+   ```html
+   <video 
+     src="/videos/writing/my-video.mp4" 
+     poster="/images/writing/video-thumbnail.jpg"
+     controls 
+     width="800"
+     muted
+   />
+   ```
+
+### YouTube Videos
+
+**Method 1: Using YouTube component**
+```jsx
+<YouTube id="VIDEO_ID" title="Video Title" />
+```
+
+**Method 2: Direct iframe**
+```html
+<iframe 
+  src="https://www.youtube.com/embed/VIDEO_ID" 
+  title="Video Title"
+  allowFullScreen
+/>
+```
+
+To get the video ID from a YouTube URL like `https://www.youtube.com/watch?v=dQw4w9WgXcQ`, use `dQw4w9WgXcQ` as the ID.
+
+### Vimeo Videos
+
+```jsx
+<Vimeo id="VIDEO_ID" title="Video Title" />
+```
+
+### Video Best Practices
+
+- **File size**: Keep videos under 50MB if hosting locally
+- **Format**: Use MP4 (H.264) for best browser compatibility
+- **Compression**: Compress videos before uploading (HandBrake, FFmpeg)
+- **Poster images**: Add poster images for better loading experience
+- **Large files**: Consider hosting on YouTube/Vimeo instead
+- **Accessibility**: Include captions/subtitles when possible
+
+### Video Formats Supported
+
+- **Local**: MP4, WebM, OGG
+- **Embedded**: YouTube, Vimeo, and any iframe-embeddable video
+
 ## Need Help?
 
 - Check the example post: `content/writing/example-with-images.md`
-- Images are automatically styled with rounded corners and shadows
-- All images are responsive and work on mobile devices
+- Images and videos are automatically styled with rounded corners and shadows
+- All media is responsive and works on mobile devices
+- Videos support controls, autoplay, loop, and muted options
 

@@ -57,6 +57,63 @@ const components = {
       )}
     </div>
   ),
+  // Video component for local videos
+  video: ({ src, poster, controls = true, autoplay = false, loop = false, muted = false, ...props }: any) => (
+    <div className="my-6">
+      <video
+        src={src}
+        poster={poster}
+        controls={controls}
+        autoPlay={autoplay}
+        loop={loop}
+        muted={muted}
+        className="rounded-lg w-full shadow-lg"
+        {...props}
+      />
+    </div>
+  ),
+  // YouTube embed component
+  YouTube: ({ id, title = 'YouTube video player' }: { id: string; title?: string }) => {
+    const embedUrl = `https://www.youtube.com/embed/${id}`
+    return (
+      <div className="my-6 aspect-video w-full">
+        <iframe
+          src={embedUrl}
+          title={title}
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowFullScreen
+          className="w-full h-full rounded-lg shadow-lg"
+        />
+      </div>
+    )
+  },
+  // Vimeo embed component
+  Vimeo: ({ id, title = 'Vimeo video player' }: { id: string; title?: string }) => {
+    const embedUrl = `https://player.vimeo.com/video/${id}`
+    return (
+      <div className="my-6 aspect-video w-full">
+        <iframe
+          src={embedUrl}
+          title={title}
+          allow="autoplay; fullscreen; picture-in-picture"
+          allowFullScreen
+          className="w-full h-full rounded-lg shadow-lg"
+        />
+      </div>
+    )
+  },
+  // Generic iframe embed component
+  VideoEmbed: ({ src, title = 'Video player', aspectRatio = '16/9' }: { src: string; title?: string; aspectRatio?: string }) => (
+    <div className="my-6 w-full" style={{ aspectRatio }}>
+      <iframe
+        src={src}
+        title={title}
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowFullScreen
+        className="w-full h-full rounded-lg shadow-lg"
+      />
+    </div>
+  ),
 }
 
 const WritingPost: NextPage<WritingPostProps> = ({ post, mdxSource }) => {

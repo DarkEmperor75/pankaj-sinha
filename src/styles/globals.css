@@ -108,6 +108,14 @@ h1, h2, h3, h4, h5, h6 {
   @apply rounded-lg shadow-lg my-6 w-full h-auto;
 }
 
+.prose video {
+  @apply rounded-lg shadow-lg my-6 w-full;
+}
+
+.prose iframe {
+  @apply rounded-lg shadow-lg;
+}
+
 .prose figure {
   @apply my-6;
 }
