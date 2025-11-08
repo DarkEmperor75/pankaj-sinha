@@ -11,9 +11,16 @@ const Footer = () => {
   ]
 
   const socialLinks = [
-    { href: 'https://github.com', label: 'GitHub', icon: 'github' },
-    { href: 'https://twitter.com', label: 'Twitter', icon: 'twitter' },
-    { href: 'https://linkedin.com', label: 'LinkedIn', icon: 'linkedin' },
+    { 
+      href: 'https://www.linkedin.com/in/pankaj-sinha-0a191a129/', 
+      label: 'LinkedIn', 
+      icon: 'linkedin' 
+    },
+    { 
+      href: 'mailto:pankajksinha.123@gmail.com', 
+      label: 'Email', 
+      icon: 'email' 
+    },
   ]
 
   return (
